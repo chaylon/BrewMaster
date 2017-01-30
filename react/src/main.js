@@ -1,10 +1,13 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ListIndex from './components/ListIndex';
 
 $(function() {
-  ReactDOM.render(
-    <h1>This is React</h1>,
-    document.getElementById('app')
-  );
+  if (document.getElementById('ListIndex')){
+    ReactDOM.render(
+      <ListIndex/>,
+      document.getElementById('ListIndex')
+    );
+  }
 });
