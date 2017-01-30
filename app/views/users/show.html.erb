@@ -1,1 +1,7 @@
-<%= @user.first_name %> <%= @user.last_name %>
+<%= @user.first_name %> <%= @user.last_name %><br/>
+Beer Lists:
+<ul>
+  <% @user.lists.each do |list| %>
+    <li><%= link_to list.name, list_path(list) %></li>
+  <% end %>
+</ul>
