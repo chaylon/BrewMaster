@@ -4,7 +4,11 @@ import Beer from './Beer';
 class BeerIndex extends Component {
   constructor(props) {
     super(props);
-    this.state = {beers: []};
+    this.state = {
+      beers: [],
+      userLists: [],
+      currentUser: null
+    };
     this.getBeers = this.getBeers.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -30,13 +34,40 @@ class BeerIndex extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      let user = body.currentUser;
       let newBeers = [];
-      body.forEach((beer) => {
+      body.beers.forEach((beer) => {
         newBeers.push(beer);
       });
-      this.setState({beers: newBeers});
+      this.setState({
+        beers: newBeers,
+        currentUser: user
+      });
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .then(response => {
+      fetch(
+        `api/v1/users/${this.state.currentUser.id}`,
+        {credentials: "same-origin"}
+      )
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}, (${response.statusText})`;
+          let error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        let newLists = [];
+        body.lists.forEach((list) => {
+          newLists.push(list);
+        });
+        this.setState({userLists: newLists});
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    });
   }
 
   handleClick() {
@@ -49,6 +80,8 @@ class BeerIndex extends Component {
         <Beer
           key = {beer.id}
           beer = {beer}
+          user = {this.state.currentUser}
+          lists = {this.state.userLists}
         />
       );
     });
