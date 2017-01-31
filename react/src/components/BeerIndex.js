@@ -35,47 +35,27 @@ class BeerIndex extends Component {
     .then(response => response.json())
     .then(body => {
       let user = body.currentUser;
+      let newLists = body.lists;
       let newBeers = [];
       body.beers.forEach((beer) => {
         newBeers.push(beer);
       });
       this.setState({
         beers: newBeers,
-        currentUser: user
+        currentUser: user,
+        userLists: newLists,
       });
     })
-    .then(response => {
-      fetch(
-        `api/v1/users/${this.state.currentUser.id}`,
-        {credentials: "same-origin"}
-      )
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status}, (${response.statusText})`;
-          let error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let newLists = [];
-        body.lists.forEach((list) => {
-          newLists.push(list);
-        });
-        this.setState({userLists: newLists});
-      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-    });
   }
 
-  handleClick() {
-
+  handleSubmit() {
+    
   }
 
   render() {
     let beers = this.state.beers.map((beer) => {
+
       return(
         <Beer
           key = {beer.id}

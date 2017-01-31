@@ -3,6 +3,7 @@ class Api::V1::BeersController < ApplicationController
 
   def index
     @beers = Beer.all
-    render json: {beers: @beers, currentUser: current_user}
+    @lists = current_user.lists
+    render json: {beers: @beers, currentUser: current_user, lists: @lists}
   end
 end

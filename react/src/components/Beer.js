@@ -5,26 +5,30 @@ import {DropdownButton, MenuItem} from 'react-bootstrap';
 class Beer extends Component {
   constructor(props) {
     super(props);
-    this.state = {lists: []};
   }
 
   render() {
     let dropdownItems = [];
-    this.state.lists.forEach((list) => {
-        dropdownItems.push(<MenuItem eventKey={`${list.id}`}>{list.name}</MenuItem>);
+    this.props.lists.forEach((list) => {
+        dropdownItems.push(<option key={`${list.id}`}>{list.name}</option>);
     });
 
     let dropdown = (
-      <DropdownButton bsSize="xsmall" title="Choose a List" id="dropdown-size-extra-small">
-        {dropdownItems}
-      </DropdownButton>
+      <form className="form-inline">
+        <select className="form-control form-control-sm" id="exampleSelect1">
+          {dropdownItems}
+        </select>
+        <button type="submit" className="btn btn-sm btn-primary">Add</button>
+      </form>
     );
+
     let beer = <a href={`beers/${this.props.beer.id}`}>{this.props.beer.name}</a>;
     let add = <span>Add</span>;
 
     return(
       <div>
-        {beer} | {add} | {dropdown}
+        {beer}
+        {dropdown}
       </div>
     );
   }
