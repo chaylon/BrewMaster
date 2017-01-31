@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
-import List from './List';
+import Beer from './Beer';
 
-class ListIndex extends Component {
+class BeerIndex extends Component {
   constructor(props) {
     super(props);
-    this.state = {lists: []};
-    this.getLists = this.getLists.bind(this);
-  }
-  componentDidMount() {
-    this.getLists();
-    setInterval(this.getLists, 15000);
+    this.state = {beers: []};
+    this.getBeers = this.getBeers.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  getLists() {
+  componentDidMount() {
+    this.getBeers();
+    setInterval(this.getLists, 30000);
+  }
+
+  getBeers() {
     fetch(
-      'api/v1/lists',
+      'api/v1/beers',
       {credentials: "same-origin"}
     )
     .then(response => {
@@ -28,31 +30,35 @@ class ListIndex extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let newLists = [];
-      body.forEach((list) => {
-        newLists.push(list);
+      let newBeers = [];
+      body.forEach((beer) => {
+        newBeers.push(beer);
       });
-      this.setState({lists: newLists});
+      this.setState({beers: newBeers});
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleClick() {
+
+  }
+
   render() {
-    let lists = this.state.lists.map((list) => {
+    let beers = this.state.beers.map((beer) => {
       return(
-        <List
-          key = {list.id}
-          list = {list}
+        <Beer
+          key = {beer.id}
+          beer = {beer}
         />
       );
     });
 
     return(
       <div>
-        {lists}
+        {beers}
       </div>
     );
   }
 }
 
-export default ListIndex;
+export default BeerIndex;
