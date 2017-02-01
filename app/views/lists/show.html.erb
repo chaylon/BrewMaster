@@ -1,4 +1,8 @@
 <%= @list.name %><br/>
 <%= @list.description %>
 
-<%= @beers %>
+<li>
+  <% @beers.each do |beer| %>
+    <li><%= beer.name %></li>
+  <% end %>
+</li>

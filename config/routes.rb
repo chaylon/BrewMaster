@@ -6,13 +6,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :lists do
-        resources :beers do
-          post '/add' => 'lists#add', as: :add
-        end
-      end
       resources :beers
       resources :users
+      resources :lists do
+        resources :selections, only: [:create]
+      end
     end
   end
 

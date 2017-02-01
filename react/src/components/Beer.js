@@ -3,25 +3,59 @@ import React, {Component} from 'react';
 class Beer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: 1
+    };
+  }
+
+  handleChange(event) {
+    let newId = parseInt(event.target.selectedOptions[0].id);
+    this.setState({value: newId});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let data = {
+      beer_id: 1,
+      list_id: 1
+    };
+
+    let jsonStringData = JSON.stringify(data);
+    fetch(`api/v1/lists/1/selections`, {
+      credentials: "same-origin",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonStringData
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let dropdownItems = [];
     this.props.lists.forEach((list) => {
-        dropdownItems.push(<option key={`${list.id}`}>{list.name}</option>);
+        dropdownItems.push(<option id={`${list.id}`} key={`${list.id}`}>{list.name}</option>);
     });
 
     let dropdown = (
-      <form className="form-inline">
-        <select className="form-control form-control-sm" id="exampleSelect1">
+      <form className="form-inline" onSubmit={this.handleSubmit}>
+        <select value="Choose a List" className="form-control form-control-sm" onChange={this.handleChange}>
+          <option>Choose a List</option>
           {dropdownItems}
         </select>
-        <button type="submit" onSubmit={this.props.onSubmit} className="btn btn-sm btn-primary">Add</button>
+        <button type="submit" className="btn btn-sm btn-primary">Add</button>
       </form>
     );
 
     let beer = <a href={`beers/${this.props.beer.id}`}>{this.props.beer.name}</a>;
-    let add = <span>Add</span>;
 
     return(
       <div>
