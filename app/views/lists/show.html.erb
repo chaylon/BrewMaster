@@ -1,8 +1,10 @@
 <%= @list.name %><br/>
 <%= @list.description %>
 
-<li>
-  <% @beers.each do |beer| %>
-    <li><%= beer.name %></li>
-  <% end %>
-</li>
+<% unless @beers.empty? %>
+  <li>
+    <% @beers.each do |beer| %>
+      <li><%= beer.name %></li>
+    <% end %>
+  </li>
+<% end %>

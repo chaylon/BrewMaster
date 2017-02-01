@@ -48,38 +48,8 @@ class BeerIndex extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  // handleSubmit(b_id, l_id) {
-  //   let data = {
-  //     beer_id: b_id,
-  //     list_id: l_id
-  //   };
-  //   let jsonStringData = JSON.stringify(data);
-  //   fetch(`api/v1/lists/${l_id}`, {
-  //     credentials: "same-origin",
-  //     method: "post",
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: jsonStringData
-  //   })
-  //   .then(response => {
-  //     if (response.ok) {
-  //       return response;
-  //     } else {
-  //       let errorMessage = `${response.status} (${response.statusText})`,
-  //       error = new Error(errorMessage);
-  //       throw(error);
-  //     }
-  //   })
-  //   .catch(error => console.error(`Error in fetch: ${error.message}`));
-  // }
-
   render() {
     let beers = this.state.beers.map((beer) => {
-
-      // let handleSubmit = (list_id) => {
-      //   return(
-      //     this.handleSubmit(beer.id, list_id)
-      //   );
-      // };
 
       return(
         <Beer

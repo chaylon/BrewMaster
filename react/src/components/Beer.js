@@ -4,20 +4,24 @@ class Beer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1
+      listId: "",
+      listText: "Choose a list"
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     let newId = parseInt(event.target.selectedOptions[0].id);
-    this.setState({value: newId});
+    let newText = event.target.value;
+    this.setState({listId: newId, listText: newText});
   }
 
   handleSubmit(event) {
     event.preventDefault();
     let data = {
-      beer_id: 1,
-      list_id: 1
+      beer_id: this.props.beer.id,
+      list_id: this.state.listId
     };
 
     let jsonStringData = JSON.stringify(data);
@@ -47,8 +51,8 @@ class Beer extends Component {
 
     let dropdown = (
       <form className="form-inline" onSubmit={this.handleSubmit}>
-        <select value="Choose a List" className="form-control form-control-sm" onChange={this.handleChange}>
-          <option>Choose a List</option>
+        <select value={this.state.listText} className="form-control form-control-sm" onChange={this.handleChange}>
+          <option>Choose a list</option>
           {dropdownItems}
         </select>
         <button type="submit" className="btn btn-sm btn-primary">Add</button>
