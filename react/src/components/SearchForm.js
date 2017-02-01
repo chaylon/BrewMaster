@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 const SearchForm = props => {
   let handleNewSearch = (event) => {
@@ -7,7 +7,7 @@ const SearchForm = props => {
 
   return(
     <div>
-      <input type='text' onChange={handleNewSearch} placeholder="Search" />
+    <input type='text' onChange={handleNewSearch} placeholder="Search" />
     </div>
   );
 };

@@ -17,12 +17,11 @@ class SearchApp extends Component {
 
   render() {
 
-    let a = "help";
+    let test = "help";
     return(
       <div>
         <SearchForm
           handleSearch = {this.handleSearch}
-          test = {a}
         />
         <BeerIndex
           search = {this.state.search}
