@@ -10,7 +10,7 @@ class BeerIndex extends Component {
       currentUser: null
     };
     this.getBeers = this.getBeers.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -49,12 +49,37 @@ class BeerIndex extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  handleSubmit() {
-    
+  handleSubmit(beer, list) {
+    let data = {
+      beer_id: beer.id
+    };
+    let jsonStringData = JSON.stringify(data);
+    fetch(`api/v1/lists/${list.id}/beers/${beer.id}`, {
+      credentials: "same-origin",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonStringData
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let beers = this.state.beers.map((beer) => {
+
+      let handleSubmit = () => {
+        return(
+          this.handleSubmit(beer)
+        );
+      };
 
       return(
         <Beer
@@ -65,6 +90,8 @@ class BeerIndex extends Component {
         />
       );
     });
+
+
 
     return(
       <div>

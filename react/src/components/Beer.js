@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {DropdownButton, MenuItem} from 'react-bootstrap';
-
 
 class Beer extends Component {
   constructor(props) {
@@ -18,7 +16,7 @@ class Beer extends Component {
         <select className="form-control form-control-sm" id="exampleSelect1">
           {dropdownItems}
         </select>
-        <button type="submit" className="btn btn-sm btn-primary">Add</button>
+        <button type="submit" onSubmit={this.props.onSubmit} className="btn btn-sm btn-primary">Add</button>
       </form>
     );
 
