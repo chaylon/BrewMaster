@@ -25,7 +25,7 @@ class Beer extends Component {
     };
 
     let jsonStringData = JSON.stringify(data);
-    fetch(`api/v1/lists/1/selections`, {
+    fetch(`api/v1/lists/${this.state.listId}/selections`, {
       credentials: "same-origin",
       method: "post",
       headers: { 'Content-Type': 'application/json' },

@@ -3,8 +3,7 @@ class Api::V1::SelectionsController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @beer = Beer.find(params[:beer_id])
-    binding.pry
-    # Selection.create(list: @list, beer: @beer)
+    Selection.create(list: @list, beer: @beer)
   end
 
   private

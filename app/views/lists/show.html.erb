@@ -2,9 +2,9 @@
 <%= @list.description %>
 
 <% unless @beers.empty? %>
-  <li>
+  <ul>
     <% @beers.each do |beer| %>
       <li><%= beer.name %></li>
     <% end %>
-  </li>
+  </ul>
 <% end %>
