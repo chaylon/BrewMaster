@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ListIndex from './components/ListIndex';
-import BeerIndex from './components/BeerIndex';
+import SearchApp from './components/SearchApp';
 
 $(function() {
   if (document.getElementById('ListIndex')) {
@@ -12,7 +12,7 @@ $(function() {
     );
   } else if (document.getElementById('BeerIndex')){
     ReactDOM.render(
-      <BeerIndex/>,
+      <SearchApp/>,
       document.getElementById('BeerIndex')
     );
   }
