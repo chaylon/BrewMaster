@@ -49,7 +49,13 @@ class BeerIndex extends Component {
   }
 
   render() {
-    let beers = this.state.beers.map((beer) => {
+    let beers = this.state.beers.filter((beer) => {
+      return (
+        beer.name.toLowerCase().search(this.props.search.toLowerCase()) > -1
+      );
+    });
+
+    beers = beers.map((beer) => {
 
       return(
         <Beer
