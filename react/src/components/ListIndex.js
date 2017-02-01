@@ -33,7 +33,8 @@ class ListIndex extends Component {
         newLists.push(list);
       });
       this.setState({lists: newLists});
-    });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {

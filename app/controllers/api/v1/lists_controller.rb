@@ -5,4 +5,5 @@ class Api::V1::ListsController < ApplicationController
     @lists = List.all
     render json: @lists
   end
+
 end
