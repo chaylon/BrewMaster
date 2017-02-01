@@ -2,7 +2,6 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ListIndex from './components/ListIndex';
-import BeerIndex from './components/BeerIndex';
 import SearchForm from './components/SearchForm';
 
 $(function() {
