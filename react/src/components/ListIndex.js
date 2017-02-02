@@ -13,8 +13,7 @@ class ListIndex extends Component {
   }
 
   getLists() {
-    fetch(
-      'api/v1/lists',
+    fetch('api/v1/lists',
       {credentials: "same-origin"}
     )
     .then(response => {

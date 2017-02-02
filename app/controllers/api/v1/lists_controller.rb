@@ -6,4 +6,11 @@ class Api::V1::ListsController < ApplicationController
     render json: @lists
   end
 
+  def show
+    @user = current_user
+    @list = List.find(params[:id])
+    @beers = @list.beers
+    render json: {list: @list, beers: @beers, user: @user}
+  end
+
 end
