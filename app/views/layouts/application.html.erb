@@ -12,6 +12,7 @@
     <div id="user-email">
       <% if user_signed_in? %>
         Welcome, <strong><%= current_user.first_name %></strong>!
+        <%= link_to "Search for Beer", beers_path, :class => 'nvabar-link' %> |
         <%= link_to "New list", new_list_path, :class => 'navbar-link' %> |
         <%= link_to "View lists", lists_path, :class => 'navbar-link' %> |
         <%= link_to "View profile", root_path, :class => 'navbar-link' %> |

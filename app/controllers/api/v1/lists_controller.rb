@@ -3,7 +3,8 @@ class Api::V1::ListsController < ApplicationController
 
   def index
     @lists = List.all
-    render json: @lists
+    @user = current_user
+    render json: {lists: @lists, user: @user}
   end
 
   def show

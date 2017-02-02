@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       resources :users
       resources :lists do
         resources :selections, only: [:create, :destroy]
+        resources :beers do
+          resources :selections, only: [:index]
+        end
       end
     end
   end

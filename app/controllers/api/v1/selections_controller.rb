@@ -1,6 +1,13 @@
 class Api::V1::SelectionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+    @list = List.find(params[:list_id])
+    @beer = Beer.find(params[:beer_id])
+    @selection = Selection.where("beer_id = #{@beer.id} AND list_id = #{@list.id}").first
+    render json: {selection: @selection}
+  end
+
   def create
     @list = List.find(params[:list_id])
     @beer = Beer.find(params[:beer_id])
@@ -8,6 +15,8 @@ class Api::V1::SelectionsController < ApplicationController
   end
 
   def destroy
+    @selection = Selection.find(params[:id])
+    @selection.destroy
   end
 
   private

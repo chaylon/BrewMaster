@@ -7,9 +7,13 @@ class ListShow extends Component {
     this.state = {
       listId: null,
       beers: [],
-      currentUser: null
+      currentUser: null,
+      selectionId: null,
+      currentList: null
     };
     this.getBeers = this.getBeers.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.findSelection = this.findSelection.bind(this);
   }
 
   componentDidMount() {
@@ -34,29 +38,86 @@ class ListShow extends Component {
     .then(response => response.json())
     .then(body => {
       let newCurrentUser = body.user;
+      let newCurrentList = body.list;
       let newBeers = body.beers;
       this.setState({
         currentUser: newCurrentUser,
         beers: newBeers,
         listId: newListId,
+        currentList: newCurrentList
       });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  handleDelete(selectionId) {
+    fetch(`/api/v1/lists/${this.state.listId}/selections/${selectionId}`, {
+      method: 'delete',
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}, (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => {
+      this.getBeers();
+    });
+  }
+
+  findSelection(listId, beerId) {
+    fetch(`/api/v1/lists/${listId}/beers/${beerId}/selections`, {
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}, (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newSelectionId = body.selection.id;
+      this.setState({selectionId: newSelectionId},
+        function() {
+          this.handleDelete(this.state.selectionId);
+        }
+      );
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let beers = this.state.beers.map((beer) => {
+
+      let onDelete = () => {
+        this.findSelection(this.state.listId, beer.id);
+      };
+
       return(
         <BeerOnList
           key = {beer.id}
           beer = {beer}
+          list = {this.state.currentList}
+          user = {this.state.currentUser}
+          onDelete = {onDelete}
         />
       );
     });
 
+    let searchButton = <p><a href="/beers">Find more beers!</a></p>;
+
     return(
       <div>
         {beers}
+        {searchButton}
       </div>
     );
   }

@@ -4,7 +4,10 @@ import List from './List';
 class ListIndex extends Component {
   constructor(props) {
     super(props);
-    this.state = {lists: []};
+    this.state = {
+      lists: [],
+      currentUser: null
+    };
     this.getLists = this.getLists.bind(this);
   }
   componentDidMount() {
@@ -28,10 +31,14 @@ class ListIndex extends Component {
     .then(response => response.json())
     .then(body => {
       let newLists = [];
-      body.forEach((list) => {
+      let newCurrentUser = body.user;
+      body.lists.forEach((list) => {
         newLists.push(list);
       });
-      this.setState({lists: newLists});
+      this.setState({
+        lists: newLists,
+        currentUser: newCurrentUser
+      });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -67,6 +74,7 @@ class ListIndex extends Component {
         <List
           key = {list.id}
           list = {list}
+          user = {this.state.currentUser}
           handleDelete = {handleDeleteList}
         />
       );
