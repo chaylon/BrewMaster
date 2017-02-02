@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :beers
+      resources :beers do
+        resources :ratings
+      end
       resources :users
       resources :lists do
         resources :selections, only: [:create, :destroy]
