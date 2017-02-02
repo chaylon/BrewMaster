@@ -8,7 +8,8 @@ class ListShow extends Component {
       listId: null,
       beers: [],
       currentUser: null,
-      selectionId: null
+      selectionId: null,
+      currentList: null
     };
     this.getBeers = this.getBeers.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -37,11 +38,13 @@ class ListShow extends Component {
     .then(response => response.json())
     .then(body => {
       let newCurrentUser = body.user;
+      let newCurrentList = body.list;
       let newBeers = body.beers;
       this.setState({
         currentUser: newCurrentUser,
         beers: newBeers,
         listId: newListId,
+        currentList: newCurrentList
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -99,6 +102,8 @@ class ListShow extends Component {
         <BeerOnList
           key = {beer.id}
           beer = {beer}
+          list = {this.state.currentList}
+          user = {this.state.currentUser}
           onDelete = {onDelete}
         />
       );
