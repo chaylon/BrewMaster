@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :beers
       resources :users
       resources :lists do
-        resources :selections, only: [:create]
+        resources :selections, only: [:create, :destroy]
       end
     end
   end

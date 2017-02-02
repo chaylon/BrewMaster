@@ -38,7 +38,7 @@ class ListShow extends Component {
       this.setState({
         currentUser: newCurrentUser,
         beers: newBeers,
-        listId: newListId
+        listId: newListId,
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
