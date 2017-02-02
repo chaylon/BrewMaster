@@ -16,6 +16,7 @@ class Api::V1::SelectionsController < ApplicationController
 
   def destroy
     @selection = Selection.find(params[:id])
+    @selection.destroy
   end
 
   private

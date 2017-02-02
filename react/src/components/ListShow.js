@@ -85,7 +85,11 @@ class ListShow extends Component {
     .then(response => response.json())
     .then(body => {
       let newSelectionId = body.selection.id;
-      this.setState({selectionId: newSelectionId});
+      this.setState({selectionId: newSelectionId},
+        function() {
+          this.handleDelete(this.state.selectionId);
+        }
+      );
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -95,7 +99,6 @@ class ListShow extends Component {
 
       let onDelete = () => {
         this.findSelection(this.state.listId, beer.id);
-        this.handleDelete(this.state.selectionId);
       };
 
       return(
@@ -109,9 +112,12 @@ class ListShow extends Component {
       );
     });
 
+    let searchButton = <p><a href="/beers">Find more beers!</a></p>;
+
     return(
       <div>
         {beers}
+        {searchButton}
       </div>
     );
   }
