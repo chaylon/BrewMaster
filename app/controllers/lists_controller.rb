@@ -25,6 +25,16 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+    @list.update(list_params)
+    redirect_to @list
+  end
+
   private
 
   def list_params

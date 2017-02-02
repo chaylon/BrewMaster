@@ -72,6 +72,11 @@ class ListIndex extends Component {
       );
     });
 
+
+    lists = lists.sort(function(a,b) {
+      return b.key - a.key;
+    });
+
     return(
       <div>
         {lists}
