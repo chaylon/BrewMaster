@@ -12,7 +12,7 @@
 # response["data"].each do |beer|
 #   name = beer["name"].tr('"\"','')
 #   description = beer["description"]
-#   brewery = nil
+#   brewery = ""
 #   abv = nil
 #   ibu = nil
 #
