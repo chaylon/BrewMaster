@@ -1,4 +1,6 @@
 class Api::V1::RatingsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @ratings = Rating.where(beer_id: params[:beer_id])
     sum = 0
@@ -27,6 +29,6 @@ class Api::V1::RatingsController < ApplicationController
   private
 
   def rating_params
-    params.require(:rating).permit(:user_id, :beer_id, :score)
+    params.require(:rating).permit(:user_id, :beer_id, :score, :review)
   end
 end

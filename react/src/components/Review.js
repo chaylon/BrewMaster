@@ -2,13 +2,15 @@ import React from 'react';
 
 const Review = props => {
 
-  let reviews = props.reviews.map((review) => {
-    <div>{review.score} | {review.review}</div>;
+  let ratings = props.ratings.map((rating) => {
+    return(
+      <div key={rating.id}>{rating.score} | {rating.review}</div>
+    );
   });
 
   return(
     <div>
-      {reviews}
+      {ratings}
     </div>
   );
 };

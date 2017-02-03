@@ -21,10 +21,12 @@ class Rating extends Component {
     this.getRatings(newBeerId);
   }
 
-  onSubmit(beerId, userId) {
+  onSubmit(beerId, userId, score, review) {
     let data = {
       beer_id: beerId,
-      user_id: userId
+      user_id: userId,
+      score: score,
+      review: review
     };
     let jsonStringData = JSON.stringify(data);
     fetch(`/api/v1/beers/${beerId}/ratings`, {
@@ -41,6 +43,9 @@ class Rating extends Component {
         let error = new Error(errorMessage);
         throw(error);
       }
+    })
+    .then(response => {
+      this.getRatings(this.state.beer.id);
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -80,7 +85,12 @@ class Rating extends Component {
   render() {
     let handleSubmit = (event) => {
       event.preventDefault();
-      this.onSubmit(this.state.beer.id, this.state.currentUser.id);
+      this.onSubmit(
+        this.state.beer.id,
+        this.state.currentUser.id,
+        event.target[0].valueAsNumber,
+        event.target[1].value
+      );
     };
 
     return(
@@ -90,7 +100,7 @@ class Rating extends Component {
           handleSubmit = {handleSubmit}
         />
         <Review
-          reviews = {this.state.reviews}
+          ratings = {this.state.ratings}
         />
       </div>
     );
