@@ -2,7 +2,12 @@
 <%= @beer.name %><br>
 Brewery: <%= @beer.brewery %><br>
 <%= @beer.description %><br>
-ABV: <%= @beer.abv %>%<br>
+<% if @beer.style %>
+  Style: <%= @beer.style %>
+<% end %><br>
+<% if @beer.abv %>
+  ABV: <%= @beer.abv %>%<br>
+<% end %>
 <% if @beer.ibu %>
   IBU: <%= @beer.ibu %>
 <% end %>

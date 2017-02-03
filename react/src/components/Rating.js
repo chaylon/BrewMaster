@@ -93,9 +93,14 @@ class Rating extends Component {
       );
     };
 
+    let rating;
+    if (this.state.score !== null) {
+      rating = <p>Rating: {this.state.score}</p>;
+    }
+
     return(
       <div>
-        Rating: {this.state.score}
+        {rating}
         <RatingForm
           handleSubmit = {handleSubmit}
         />
