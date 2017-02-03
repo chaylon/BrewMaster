@@ -49,9 +49,22 @@ class BeerIndex extends Component {
   }
 
   render() {
+
     let beers = this.state.beers.filter((beer) => {
       return (
-        beer.name.toLowerCase().search(this.props.search.toLowerCase()) > -1
+        beer.name.toLowerCase().search(this.props.searchName.toLowerCase()) > -1
+      );
+    });
+
+    beers = beers.filter((beer) => {
+      return (
+        beer.brewery.toLowerCase().search(this.props.searchBrew.toLowerCase()) > -1
+      );
+    });
+
+    beers = beers.filter((beer) => {
+      return (
+        beer.style.toLowerCase().search(this.props.searchStyle.toLowerCase()) > -1
       );
     });
 
@@ -67,7 +80,9 @@ class BeerIndex extends Component {
       );
     });
 
-
+    beers = beers.sort(function(a,b) {
+      return a.key - b.key;
+    });
 
     return(
       <div>
