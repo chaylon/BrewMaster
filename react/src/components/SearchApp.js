@@ -6,25 +6,39 @@ class SearchApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ""
+      searchName: "",
+      searchBrew: "",
+      searchStyle: ""
     };
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchName = this.handleSearchName.bind(this);
+    this.handleSearchBrew = this.handleSearchBrew.bind(this);
+    this.handleSearchStyle = this.handleSearchStyle.bind(this);
   }
 
-  handleSearch(term) {
-    this.setState({search: term});
+  handleSearchName(term) {
+    this.setState({searchName: term});
+  }
+
+  handleSearchBrew(term) {
+    this.setState({searchBrew: term});
+  }
+
+  handleSearchStyle(term) {
+    this.setState({searchStyle: term});
   }
 
   render() {
-
-    let test = "help";
     return(
       <div>
         <SearchForm
-          handleSearch = {this.handleSearch}
+          handleSearchName = {this.handleSearchName}
+          handleSearchBrew = {this.handleSearchBrew}
+          handleSearchStyle = {this.handleSearchStyle}
         />
         <BeerIndex
-          search = {this.state.search}
+          searchName = {this.state.searchName}
+          searchBrew = {this.state.searchBrew}
+          searchStyle = {this.state.searchStyle}
         />
       </div>
     );
