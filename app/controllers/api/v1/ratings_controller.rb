@@ -11,6 +11,7 @@ class Api::V1::RatingsController < ApplicationController
       @score = sum/@ratings.length
     end
     @beer = Beer.find(params[:beer_id])
+    @beer.update(score: @score)
     render json: {score: @score, ratings: @ratings, user: current_user, beer: @beer}
   end
 
