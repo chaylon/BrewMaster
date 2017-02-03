@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202211814) do
+ActiveRecord::Schema.define(version: 20170203160120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170202211814) do
     t.text    "description", default: ""
     t.float   "abv"
     t.integer "ibu"
+    t.string  "style"
   end
 
   create_table "lists", force: :cascade do |t|

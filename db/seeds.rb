@@ -7,14 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'httparty'
 # require 'pry'
-# url = "http://api.brewerydb.com/v2/beers?withBreweries=Y&key=#{ENV['API_KEY']}"
+# url = "http://api.brewerydb.com/v2/beers?withBreweries=Y&key="
 # response = HTTParty.get(url)
+#
 # response["data"].each do |beer|
 #   name = beer["name"].tr('"\"','')
 #   description = beer["description"]
 #   brewery = nil
 #   abv = nil
 #   ibu = nil
+#   style = ""
+#
+#   if beer["style"]
+#     style = beer["style"]["shortName"]
+#   end
 #
 #   if beer["breweries"][0]["name"]
 #     brewery = beer["breweries"][0]["name"]
@@ -28,5 +34,5 @@
 #     ibu = beer["ibu"].to_i
 #   end
 #
-#   Beer.create(name: name, description: description, brewery: brewery, abv: abv, ibu: ibu)
+#   Beer.create(name: name, description: description, brewery: brewery, style: style, abv: abv, ibu: ibu)
 # end
