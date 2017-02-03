@@ -4,22 +4,31 @@ import ReactDOM from 'react-dom';
 import ListIndex from './components/ListIndex';
 import SearchApp from './components/SearchApp';
 import ListShow from './components/ListShow';
+import Rating from './components/Rating';
 
 $(function() {
-  if (document.getElementById('ListIndex')) {
+  if (document.getElementById('ListIndex')){
     ReactDOM.render(
       <ListIndex/>,
       document.getElementById('ListIndex')
     );
-  } else if (document.getElementById('BeerIndex')){
+  }
+  if (document.getElementById('BeerIndex')){
     ReactDOM.render(
       <SearchApp/>,
       document.getElementById('BeerIndex')
     );
-  } else if (document.getElementById('ListShow')){
+  }
+  if (document.getElementById('ListShow')){
     ReactDOM.render(
       <ListShow/>,
       document.getElementById('ListShow')
+    );
+  }
+  if (document.getElementById('Rating')){
+    ReactDOM.render(
+      <Rating/>,
+      document.getElementById('Rating')
     );
   }
 });
