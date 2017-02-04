@@ -19,7 +19,7 @@
 #   style = ""
 #
 #   if beer["style"]
-#     style = beer["style"]["shortName"]
+#     style = beer["style"]["name"]
 #   end
 #
 #   if beer["breweries"][0]["name"]
