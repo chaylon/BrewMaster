@@ -5,3 +5,17 @@ Beer Lists:
     <li><%= link_to list.name, list_path(list) %></li>
   <% end %>
 </ul>
+
+Favorite Beers:
+<ol>
+  <% @fav_beers.each do |beer| %>
+    <li><%= link_to beer.name, beer_path(beer) %>, <%= beer.score %></li>
+  <% end %>
+</ol>
+
+Recommendations:
+<ul>
+  <% @recommendations.each do |beer| %>
+    <li><%= link_to beer.name, beer_path(beer) %>
+  <% end %>
+</ul>
