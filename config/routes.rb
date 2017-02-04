@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :lists
   resources :beers, only: [:index, :show]
+  resources :users, only: [:show]
+
+  get '/home' => 'homes#index'
+  root 'homes#index'
 
   namespace :api do
     namespace :v1 do
@@ -19,5 +23,4 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'users#show'
 end

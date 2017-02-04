@@ -1,0 +1,233 @@
+html, body{
+  margin:0;
+  padding:0;
+}
+
+.hero {
+  background: url("/assets/beer_photo.jpg");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  -webkit-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+}
+
+.logo {
+  text-align: center;
+}
+
+.hero-content h1 {
+  color: white;
+  margin: 0
+}
+
+.hero-content p {
+  color: white;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.login-link, .signup-link {
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  width: 200px;
+  border: 0;
+}
+
+.login-link {
+  background-color: #f49e42;
+}
+
+.signup-link {
+  background-color: #b56510;
+}
+
+.login-link:hover {
+  background-color: #b56510;
+  text-decoration: none;
+  color: white;
+}
+
+.signup-link:hover {
+  background-color: #f49e42;
+  text-decoration: none;
+  color: white;
+}
+
+.hero-content-white {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.input-box {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.hero-content-signup .login-link {
+  margin: 10px 0;
+}
+
+.hero-content-signup li {
+  list-style: none;
+}
+
+#error_explanation h2 {
+  display: none;
+}
+
+#error_explanation ul {
+  font-size: 8px;
+  color: red;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.header {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #f49e42;
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav ul li {
+  display: inline-block;
+}
+
+.header-nav ul li a {
+  color: black;
+}
+
+.header-nav {
+  text-align: right;
+}
+
+.header-nav ul li::after {
+  display: inline-block;
+  content: "|";
+  margin: 0 5px;
+}
+
+.header-nav ul li:last-child::after {
+  content: none;
+}
+
+.list-sidebar {
+  background-color: lightgrey;
+  height: 100vh;
+}
+
+.list-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-sidebar ul li {
+  display: block;
+  border-bottom: 2px solid black;
+}
+
+.list-sidebar ul li:first-child {
+  border-top: 2px solid black;
+}
+
+.list-sidebar ul li a {
+  display: block;
+  padding: 10px 10px;
+}
+
+.list-sidebar h4 {
+  padding: 10px 10px 0;
+}
+
+.image-thing {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.image-thing img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.favorite {
+  text-align: center;
+  position: relative;
+  height: 200px;
+  border: 3px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.score {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.favorite h4 {
+  height: 54px;
+  overflow: hidden;
+}
+
+.recommendations ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 3;
+}
+
+.sub-nav {
+  position: absolute;
+  background-color: #f49e42;
+}
+
+.sub-nav li {
+  display: block;
+}
