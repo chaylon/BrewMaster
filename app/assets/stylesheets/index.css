@@ -226,8 +226,26 @@ html, body{
 .sub-nav {
   position: absolute;
   background-color: #f49e42;
+  text-align: left;
+  display: none;
+  z-index: 1;
+  width: 100px;
 }
 
-.sub-nav li {
+.header-nav ul li .sub-nav li {
   display: block;
+  border-bottom: 1px solid black;
+}
+
+.header-nav ul li .sub-nav li:last-child {
+  border-bottom: none;
+}
+
+.header-nav ul li .sub-nav li a {
+  display: block;
+  padding: 5px;
+}
+
+.header-nav ul li .sub-nav li::after {
+  content: none;
 }
