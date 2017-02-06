@@ -55,6 +55,7 @@ html, body{
 
 .login-link {
   background-color: #f49e42;
+  margin: 10px 0;
 }
 
 .signup-link {
@@ -85,10 +86,6 @@ html, body{
   width: 200px;
   display: block;
   margin: 0 auto;
-}
-
-.hero-content-signup .login-link {
-  margin: 10px 0;
 }
 
 .hero-content-signup li {
@@ -250,4 +247,16 @@ html, body{
 
 .header-nav ul li .sub-nav li::after {
   content: none;
+}
+
+.signup-link-small {
+  margin-top: 5px;
+}
+
+.field {
+  margin-bottom: .5rem;
+}
+
+.check-box {
+  margin-bottom: 0;
 }
