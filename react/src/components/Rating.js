@@ -13,6 +13,7 @@ class Rating extends Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.getRatings = this.getRatings.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +83,25 @@ class Rating extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleDelete(beerId, ratingId) {
+    fetch(`/api/v1/beers/${beerId}/ratings/${ratingId}`, {
+      method: 'delete',
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}, (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => {
+      this.getRatings(this.state.beer.id);
+    });
+  }
+
   render() {
     let handleSubmit = (event) => {
       event.preventDefault();
@@ -106,6 +126,9 @@ class Rating extends Component {
         />
         <Review
           ratings = {this.state.ratings}
+          user = {this.state.currentUser}
+          beer = {this.state.beer}
+          handleDelete = {this.handleDelete}
         />
       </div>
     );
