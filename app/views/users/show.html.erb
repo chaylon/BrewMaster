@@ -1,21 +1,31 @@
 <%= @user.first_name %> <%= @user.last_name %><br/>
-Beer Lists:
-<ul>
-  <% @user.lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
 
 Favorite Beers:
-<ol>
+<div class="row">
   <% @fav_beers.each do |beer| %>
-    <li><%= link_to beer.name, beer_path(beer) %>, <%= beer.score %></li>
+    <div class="col-md-3 col-sm-4">
+      <div class="favorite">
+        <div class="image-thing">
+          <img src="/assets/beer_icon.jpg">
+        </div>
+        <h4><%= link_to beer.name, beer_path(beer) %><h4>
+        <div class="score">
+          <%= beer.score %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ol>
+</div>
 
 Recommendations:
-<ul>
-  <% @recommendations.each do |beer| %>
-    <li><%= link_to beer.name, beer_path(beer) %>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="recommendations">
+      <ul>
+        <% @recommendations.each do |beer| %>
+          <li><%= link_to beer.name, beer_path(beer) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
