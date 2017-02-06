@@ -50,6 +50,7 @@ html, body{
   color: white;
   width: 200px;
   border: 0;
+  border-radius: 3px;
 }
 
 .login-link {
@@ -57,17 +58,17 @@ html, body{
 }
 
 .signup-link {
-  background-color: #b56510;
+  background-color: #f49e42;
 }
 
 .login-link:hover {
-  background-color: #b56510;
+  background-color: #b76400;
   text-decoration: none;
   color: white;
 }
 
 .signup-link:hover {
-  background-color: #f49e42;
+  background-color: #b76400;
   text-decoration: none;
   color: white;
 }
@@ -197,6 +198,7 @@ html, body{
   position: relative;
   height: 200px;
   border: 3px solid black;
+  border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
 }
