@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       resources :users
       resources :beers do
         resources :ratings
+        collection do
+          get 'filter'
+        end
       end
       resources :lists do
         resources :selections, only: [:create, :destroy]

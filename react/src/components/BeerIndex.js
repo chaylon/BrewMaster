@@ -9,19 +9,20 @@ class BeerIndex extends Component {
       userLists: [],
       currentUser: null
     };
-    this.getBeers = this.getBeers.bind(this);
+    this.filterBeers = this.filterBeers.bind(this);
   }
 
   componentDidMount() {
-    this.getBeers();
-    setInterval(this.getLists, 30000);
+    this.filterBeers();
   }
 
-  getBeers() {
-    fetch(
-      'api/v1/beers',
-      {credentials: "same-origin"}
-    )
+  filterBeers() {
+    let name = this.props.searchName;
+    let brew = this.props.searchBrew;
+    let style = this.props.searchStyle;
+    fetch(`/api/v1/beers/filter?name_search=${name}&brew_search=${brew}&style_search=${style}`, {
+      credentials: "same-origin"
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -33,42 +34,21 @@ class BeerIndex extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      let beers = body.beers;
+      let lists = body.lists;
       let user = body.currentUser;
-      let newLists = body.lists;
-      let newBeers = [];
-      body.beers.forEach((beer) => {
-        newBeers.push(beer);
-      });
       this.setState({
-        beers: newBeers,
-        currentUser: user,
-        userLists: newLists,
+        beers: beers,
+        userLists: lists,
+        currentUser: user
       });
     })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
 
-    let beers = this.state.beers.filter((beer) => {
-      return (
-        beer.name.toLowerCase().search(this.props.searchName.toLowerCase()) > -1
-      );
-    });
-
-    beers = beers.filter((beer) => {
-      return (
-        beer.brewery.toLowerCase().search(this.props.searchBrew.toLowerCase()) > -1
-      );
-    });
-
-    beers = beers.filter((beer) => {
-      return (
-        beer.style.toLowerCase().search(this.props.searchStyle.toLowerCase()) > -1
-      );
-    });
-
-    beers = beers.map((beer) => {
+    let beers = this.state.beers.map((beer) => {
 
       return(
         <Beer
