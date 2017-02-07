@@ -16,9 +16,9 @@ class Api::V1::BeersController < ApplicationController
     @beers = Beer.where("LOWER (name) LIKE ?", "%#{name_search}%")
     @beers = @beers.where("LOWER (brewery) LIKE ?", "%#{brew_search}%")
     @beers = @beers.where("LOWER (style) LIKE ?", "%#{style_search}%")
+    numBeers = @beers.length
     @beers = @beers.limit(10).offset(offset)
     @lists = current_user.lists
-    numBeers = Beer.all.length
     render json: {beers: @beers, currentUser: current_user, lists: @lists, numBeers: numBeers}
   end
 end
