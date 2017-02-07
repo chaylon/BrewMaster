@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SearchForm from './SearchForm';
 import BeerIndex from './BeerIndex';
+import ReactPaginate from 'react-paginate';
 
 class SearchApp extends Component {
   constructor(props) {
@@ -11,12 +12,15 @@ class SearchApp extends Component {
       searchStyle: "",
       beers: [],
       lists: [],
-      currentUser: null
+      currentUser: null,
+      numBeers: null,
+      page: 1
     };
     this.handleSearchName = this.handleSearchName.bind(this);
     this.handleSearchBrew = this.handleSearchBrew.bind(this);
     this.handleSearchStyle = this.handleSearchStyle.bind(this);
     this.filterBeers = this.filterBeers.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
@@ -31,18 +35,25 @@ class SearchApp extends Component {
   }
 
   handleSearchBrew(term) {
-    this.setState({searchBrew: term});
+    this.setState({searchBrew: term}, () => {
+      this.filterBeers();
+      }
+    );
   }
 
   handleSearchStyle(term) {
-    this.setState({searchStyle: term});
+    this.setState({searchStyle: term}, () => {
+      this.filterBeers();
+      }
+    );
   }
 
   filterBeers() {
     let name = this.state.searchName;
     let brew = this.state.searchBrew;
     let style = this.state.searchStyle;
-    fetch(`/api/v1/beers/filter?name_search=${name}&brew_search=${brew}&style_search=${style}`, {
+    let page = this.state.page;
+    fetch(`/api/v1/beers/filter?name_search=${name}&brew_search=${brew}&style_search=${style}&page=${page}`, {
       credentials: "same-origin"
     })
     .then(response => {
@@ -59,16 +70,26 @@ class SearchApp extends Component {
       let beers = body.beers;
       let lists = body.lists;
       let user = body.currentUser;
+      let numBeers = body.numBeers;
       this.setState({
         beers: beers,
         userLists: lists,
-        currentUser: user
+        currentUser: user,
+        numBeers: numBeers
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handlePageChange(data) {
+    let page = data.selected + 1;
+    this.setState({page: page}, () => {
+      this.filterBeers();
+    });
+  }
+
   render() {
+
     return(
       <div>
         <SearchForm
@@ -83,6 +104,17 @@ class SearchApp extends Component {
           beers = {this.state.beers}
           currentUser = {this.state.currentUser}
           lists = {this.state.lists}
+        />
+        <ReactPaginate
+          previousLabel={"previous"}
+          nextLabel={"next"}
+          pageCount={this.state.numBeers/10}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageChange}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
         />
       </div>
     );
