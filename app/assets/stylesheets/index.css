@@ -260,3 +260,48 @@ html, body{
 .check-box {
   margin-bottom: 0;
 }
+
+.list-index {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.functions {
+  text-align: right;
+}
+
+.page-background {
+  background: url("/assets/taps.jpg");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.page-background-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.no-padding {
+  padding-left: 0;
+}
+
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#react-paginate li {
+    display: inline-block;
+}
+
+#react-paginate .break a {
+    cursor: default;
+}

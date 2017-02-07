@@ -10,10 +10,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :users
       resources :beers do
         resources :ratings
+        collection do
+          get 'filter'
+        end
       end
-      resources :users
       resources :lists do
         resources :selections, only: [:create, :destroy]
         resources :beers do

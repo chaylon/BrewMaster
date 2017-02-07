@@ -59,8 +59,8 @@ class ListIndex extends Component {
     })
     .then(response => {
       this.getLists();
-    });
-
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
