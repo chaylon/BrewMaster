@@ -73,7 +73,7 @@ class SearchApp extends Component {
       let numBeers = body.numBeers;
       this.setState({
         beers: beers,
-        userLists: lists,
+        lists: lists,
         currentUser: user,
         numBeers: numBeers
       });
@@ -92,11 +92,14 @@ class SearchApp extends Component {
 
     return(
       <div>
-        <SearchForm
-          handleSearchName = {this.handleSearchName}
-          handleSearchBrew = {this.handleSearchBrew}
-          handleSearchStyle = {this.handleSearchStyle}
-        />
+        <div className="search-bar">
+          <h3>Search for beers!</h3>
+          <SearchForm
+            handleSearchName = {this.handleSearchName}
+            handleSearchBrew = {this.handleSearchBrew}
+            handleSearchStyle = {this.handleSearchStyle}
+          />
+        </div>
         <BeerIndex
           searchName = {this.state.searchName}
           searchBrew = {this.state.searchBrew}
@@ -108,7 +111,9 @@ class SearchApp extends Component {
         <ReactPaginate
           previousLabel={"previous"}
           nextLabel={"next"}
-          pageCount={this.state.numBeers/10}
+          breakLabel={<a href="javascript:;">...</a>}
+          breakClassName={"break-me"}
+          pageCount={this.state.numBeers/20}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={this.handlePageChange}

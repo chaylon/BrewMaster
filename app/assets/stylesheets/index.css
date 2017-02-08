@@ -41,7 +41,6 @@ html, body{
 .hero-content p {
   color: white;
   margin: 0;
-  margin-bottom: 15px;
 }
 
 .login-link, .signup-link {
@@ -282,7 +281,7 @@ html, body{
 }
 
 .page-background-overlay {
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
@@ -293,15 +292,51 @@ html, body{
 }
 
 #react-paginate ul {
-    display: inline-block;
-    padding-left: 15px;
-    padding-right: 15px;
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #react-paginate li {
-    display: inline-block;
+  display: inline-block;
+}
+
+.pagination li::after {
+  content: " |"
+}
+
+.pagination li::before {
+  content: "| "
+}
+
+.pagination li:last-child::after {
+  content: none
+}
+
+.pagination li:first-child::before {
+  content: none
+}
+
+.pagination li .active {
+  color: red;
 }
 
 #react-paginate .break a {
-    cursor: default;
+  cursor: default;
+}
+
+.pagination {
+  margin: 20px auto;
+}
+
+.search-bar {
+  margin-left: 10px;
+}
+
+.beers {
+  display: inline-block;
+}
+
+.list-list {
+  padding: 5px;
 }

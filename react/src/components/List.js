@@ -2,11 +2,8 @@ import React from 'react';
 
 const List = props =>{
 
-  let list = <div className="col-sm-6">
+  let list = <div className="col-sm-6 list-list">
               <a href={`lists/${props.list.id}`}>{props.list.name}</a>
-              <div>
-              AHHHHHHHHHHHHHHHH
-              </div>
              </div>;
 
   let editButton;
