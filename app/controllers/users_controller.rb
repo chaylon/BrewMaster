@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     beers = @user.beers
     beers = beers.order(:score).reverse
     limit_beers = beers[0..7]
@@ -11,15 +11,17 @@ class UsersController < ApplicationController
       end
     end
 
-    fav_style = @fav_beers[0].style
-    @beers = Beer.where(style: fav_style)
-
     @recommendations = []
-    @beers.each do |beer|
-      unless @fav_beers.include?(beer)
-        @recommendations << beer
+    unless @fav_beers.empty?
+      fav_style = @fav_beers[0].style
+      @beers = Beer.where(style: fav_style)
+
+      @beers.each do |beer|
+        unless @fav_beers.include?(beer)
+          @recommendations << beer
+        end
       end
+      @recommendations = @recommendations[0..4]
     end
-    @recommendations = @recommendations[0..4]
   end
 end

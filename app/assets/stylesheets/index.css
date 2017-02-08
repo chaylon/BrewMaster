@@ -302,8 +302,32 @@ html, body{
   display: inline-block;
 }
 
+.pagination li::after {
+  content: " |"
+}
+
+.pagination li::before {
+  content: "| "
+}
+
+.pagination li:last-child::after {
+  content: none
+}
+
+.pagination li:first-child::before {
+  content: none
+}
+
+.pagination li .active {
+  color: red;
+}
+
 #react-paginate .break a {
   cursor: default;
+}
+
+.pagination {
+  margin: 20px auto;
 }
 
 .review-form, .beer-info {
@@ -312,4 +336,12 @@ html, body{
   border-radius: 4px;
   margin-right: 15px;
   margin: 5px 0;
+}
+
+.search-bar {
+  margin-left: 10px;
+}
+
+.beers {
+  display: inline-block;
 }

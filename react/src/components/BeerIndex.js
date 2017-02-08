@@ -5,12 +5,14 @@ const BeerIndex = props => {
   let beers = props.beers.map((beer) => {
 
     return(
-      <Beer
-        key = {beer.id}
-        beer = {beer}
-        user = {props.currentUser}
-        lists = {props.lists}
-      />
+      <div className="beers col-sm-6">
+        <Beer
+          key = {beer.id}
+          beer = {beer}
+          user = {props.currentUser}
+          lists = {props.lists}
+        />
+      </div>
     );
   });
 
