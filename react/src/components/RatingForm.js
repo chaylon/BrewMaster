@@ -5,14 +5,12 @@ const RatingForm = props => {
     <div>
       {props.score}
       <form onSubmit={props.handleSubmit}>
-        <div className="form-group row">
-          <label className="col-2 col-form-label">Rating</label>
-          <div className="col-2">
-            <input className="form-control" type="number" min="0.5" max="5" step="0.5"/>
+        <div className="form-group">
+          <div>
+            Rating: <input className="form-control col-2" type="number" min="0.5" max="5" step="0.5"/>
           </div>
-          <div className="col-10">
-            <label htmlFor="review">Review</label>
-            <textarea className="form-control" id="review" rows="3"/>
+          <div>
+            Review: <textarea className="form-control col-6" id="review" rows="3"/>
           </div>
           <button type="submit" className="btn btn-sm btn-primary">Submit</button>
         </div>

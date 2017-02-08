@@ -18,7 +18,7 @@ const Review = props => {
   });
 
   return(
-    <div>
+    <div className="display-reviews">
       {ratings}
     </div>
   );

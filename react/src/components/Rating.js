@@ -119,7 +119,7 @@ class Rating extends Component {
     }
 
     return(
-      <div>
+      <div className="review-form">
         {rating}
         <RatingForm
           handleSubmit = {handleSubmit}
