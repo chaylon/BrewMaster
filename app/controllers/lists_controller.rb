@@ -27,14 +27,14 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    if @list.id != current_user.id
+    if @list.user_id != current_user.id
       redirect_to @list
     end
   end
 
   def update
     @list = List.find(params[:id])
-    if @list.id == current_user.id
+    if @list.user_id == current_user.id
       @list.update(list_params)
       redirect_to @list
     else
