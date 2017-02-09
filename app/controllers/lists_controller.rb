@@ -1,15 +1,17 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
+    @new_list = List.new
   end
 
   def show
     @list = List.find(params[:id])
+    @new_list = List.new
     @beers = @list.beers
   end
 
   def new
-    @list = List.new
+    @new_list = List.new
   end
 
   def create
@@ -26,6 +28,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @new_list = List.new
     @list = List.find(params[:id])
     if @list.user_id != current_user.id
       redirect_to @list

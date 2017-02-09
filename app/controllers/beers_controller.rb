@@ -1,10 +1,12 @@
 class BeersController < ApplicationController
   def index
     @beers = Beer.all
+    @new_list = List.new
   end
 
   def show
     @beer = Beer.find(params[:id])
+    @new_list = List.new
   end
 
   private

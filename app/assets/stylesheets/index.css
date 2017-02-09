@@ -340,3 +340,7 @@ html, body{
 .list-list {
   padding: 5px;
 }
+
+body {
+  font-family: 'Permanent Marker', cursive;
+}

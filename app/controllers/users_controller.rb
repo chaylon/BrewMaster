@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @new_list = List.new
     @user = User.find(params[:id])
     beers = @user.beers
     beers = beers.order(:score).reverse
