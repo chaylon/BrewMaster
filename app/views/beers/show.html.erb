@@ -1,7 +1,7 @@
 <div class="beer-info">
-  <%= @beer.name %><br>
+  <h3><%= @beer.name %></h3>
   Brewery: <%= @beer.brewery %><br>
-  <%= @beer.description %><br>
+  Description: <%= @beer.description %><br>
   <% if @beer.style %>
     Style: <%= @beer.style %>
   <% end %><br>
@@ -12,4 +12,5 @@
     IBU: <%= @beer.ibu %>
   <% end %>
 </div>
+<br>
 <div id="Rating"/>

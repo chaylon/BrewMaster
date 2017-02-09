@@ -1,31 +1,36 @@
-<%= @user.first_name %> <%= @user.last_name %><br/>
+<div class="user-profile">
+  <h3><%= @user.first_name %> <%= @user.last_name %><h3>
 
-Favorite Beers:
-<div class="row">
-  <% @fav_beers.each do |beer| %>
-    <div class="col-md-3 col-sm-4">
-      <div class="favorite">
-        <div class="image-thing">
-          <img src="/assets/beer_icon.jpg">
-        </div>
-        <h4><%= link_to beer.name, beer_path(beer) %><h4>
-        <div class="score">
-          <%= beer.score %>
+  <h4>Favorite Beers:</h4>
+  <div class="row">
+    <% @fav_beers.each do |beer| %>
+      <div class="col-md-3 col-sm-4">
+        <div class="favorite">
+          <div class="image-thing">
+            <img src="/assets/beer_icon.jpg">
+          </div>
+          <div class="favorite-icon">
+            <h4><%= link_to beer.name, beer_path(beer) %>
+              <div class="score">
+                <%= beer.score %>
+              </div>
+            </h4>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-Recommendations:
-<div class="row">
-  <div class="col-sm-12">
-    <div class="recommendations">
-      <ul>
-        <% @recommendations.each do |beer| %>
-          <li><%= link_to beer.name, beer_path(beer) %></li>
-        <% end %>
-      </ul>
+  <h4>Recommendations:</h4>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="recommendations">
+        <ul>
+          <% @recommendations.each do |beer| %>
+            <li><%= link_to beer.name, beer_path(beer) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

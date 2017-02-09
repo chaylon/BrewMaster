@@ -6,11 +6,42 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   </head>
 
   <body>
     <div id="user-email">
       <% if user_signed_in? %>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add a New List!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form_for(@new_list) do |f| %>
+              <div class="field">
+                <%= f.label :name %><br/>
+                <%= f.text_field :name %>
+              </div>
+
+              <div class="field">
+                <%= f.label :description %><br/>
+                <%= f.text_field :description %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit(value="Submit") %>
+              </div>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="header">
         <div class="container-fluid">
           <div class="row">
@@ -28,14 +59,14 @@
                     <%= link_to "Lists", lists_path %>
                     <ul class="sub-nav">
                       <li><%= link_to "All Lists", lists_path %></li>
-                      <li><%= link_to "New List", new_list_path %></li>
+                      <li><a href="javascript:;" data-toggle="modal" data-target="#myModal">New List</a></li>
                     </ul>
                   </li>
                   <li>
                     <%= link_to "Profile", user_path(current_user) %>
                     <ul class="sub-nav">
-                      <li><%= link_to "View Profile", user_path(current_user) %></li>
-                      <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+                      <li><%= link_to "View", user_path(current_user) %></li>
+                      <li><%= link_to "Edit", edit_user_registration_path(current_user) %></li>
                     </ul>
                   </li>
                   <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
