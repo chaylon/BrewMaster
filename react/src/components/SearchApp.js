@@ -113,7 +113,7 @@ class SearchApp extends Component {
           nextLabel={"next"}
           breakLabel={<a href="javascript:;">...</a>}
           breakClassName={"break-me"}
-          pageCount={this.state.numBeers/20}
+          pageCount={this.state.numBeers/16}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={this.handlePageChange}
