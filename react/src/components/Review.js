@@ -10,10 +10,10 @@ const Review = props => {
     let deleteButton;
 
     if (props.user.id === rating.user_id) {
-      deleteButton = <span><a href="javascript:;" onClick={handleDelete}>Delete</a></span>;
+      deleteButton = <span> | <a href="javascript:;" onClick={handleDelete}>Delete</a></span>;
     }
     return(
-      <div key={rating.id}>{rating.score} | {rating.review} | {deleteButton}</div>
+      <div key={rating.id}>{rating.score} | {rating.review}{deleteButton}</div>
     );
   });
 
