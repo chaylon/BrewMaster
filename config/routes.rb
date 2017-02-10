@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :beers, only: [:index, :show]
   resources :users, only: [:show]
 
+  authenticated :user do
+    root 'beers#index'
+  end
   get '/home' => 'homes#index'
   root 'homes#index'
 
