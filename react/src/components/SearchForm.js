@@ -18,7 +18,7 @@ const SearchForm = props => {
   let styleSearch = <span><input type='text' onChange={handleSearchStyle} placeholder="Style" /></span>;
 
   return(
-    <div>
+    <div className="search-text-box">
       {nameSearch} | {brewSearch} | {styleSearch}
     </div>
   );

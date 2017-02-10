@@ -55,7 +55,7 @@ class Beer extends Component {
           <option>Choose a list</option>
           {dropdownItems}
         </select>
-        <button type="submit" className="btn btn-sm btn-primary">Add</button>
+        <button type="submit" className="btn btn-sm btn-primary add-button">Add</button>
       </form>
     );
 

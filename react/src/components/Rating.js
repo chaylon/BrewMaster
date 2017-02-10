@@ -115,7 +115,7 @@ class Rating extends Component {
 
     let rating;
     if (this.state.score !== null) {
-      rating = <p>Rating: {this.state.score}</p>;
+      rating = <p>Overall Rating: {this.state.score}</p>;
     }
 
     return(
