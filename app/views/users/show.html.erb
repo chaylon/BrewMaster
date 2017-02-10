@@ -7,7 +7,7 @@
       <div class="col-md-3 col-sm-4">
         <div class="favorite">
           <div class="image-thing">
-            <img src="/assets/beer_icon.jpg">
+            <%= image_tag("#{beer.img}") %>
           </div>
           <div class="favorite-icon">
             <h4><%= link_to beer.name, beer_path(beer) %>
