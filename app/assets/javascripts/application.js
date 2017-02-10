@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  $('.header-nav ul li').hover(function(){
+    $(this).find('.sub-nav').toggle();
+  });
+});

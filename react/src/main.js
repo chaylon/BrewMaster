@@ -6,7 +6,7 @@ import SearchApp from './components/SearchApp';
 import ListShow from './components/ListShow';
 import Rating from './components/Rating';
 
-$(function() {
+$(document.ready(function() {
   if (document.getElementById('ListIndex')){
     ReactDOM.render(
       <ListIndex/>,
@@ -31,4 +31,5 @@ $(function() {
       document.getElementById('Rating')
     );
   }
-});
+})
+)
