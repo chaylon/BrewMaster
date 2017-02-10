@@ -1,7 +1,9 @@
 <div class="beer-info">
   <h3><%= @beer.name %></h3>
   Brewery: <%= @beer.brewery %><br>
-  Description: <%= @beer.description %><br>
+  <% if @beer.description %>
+    Description: <%= @beer.description %><br>
+  <% end %>
   <% if @beer.style %>
     Style: <%= @beer.style %>
   <% end %><br>

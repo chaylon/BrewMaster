@@ -28,7 +28,7 @@ page = 1
     end
 
     if beer["description"]
-      description = beer["decription"]
+      description = beer["description"]
     end
 
     if beer["style"]
