@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'httparty'
 require 'pry'
+images = ["beer_icon.jpg","beer-icon2.jpg","beer_icon3.png","beer_icon4.ico"]
 page = 1
 10.times do
   url = "http://api.brewerydb.com/v2/beers?p=#{page}&withBreweries=Y&key=9ba868847c4bf6b08953652d662267a9"
@@ -20,6 +21,7 @@ page = 1
     abv = nil
     ibu = nil
     style = ""
+    img = images.sample
 
     if beer["name"]
       name = beer["name"].tr('"\"','')
@@ -45,6 +47,6 @@ page = 1
       ibu = beer["ibu"].to_i
     end
 
-    Beer.create(name: name, description: description, brewery: brewery, style: style, abv: abv, ibu: ibu)
+    Beer.create(name: name, description: description, brewery: brewery, style: style, abv: abv, ibu: ibu, img: img)
   end
 end
