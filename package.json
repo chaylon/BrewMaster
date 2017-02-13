@@ -46,6 +46,7 @@
     "redux-form": "^5.2.3",
     "redux-thunk": "^2.1.0",
     "webpack": "^1.13.0",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
     "react-paginate": "4.1.1",
     "react-addons-create-fragment": "15.4.2"
   }
