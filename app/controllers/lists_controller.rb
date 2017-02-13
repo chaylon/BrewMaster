@@ -36,10 +36,15 @@ class ListsController < ApplicationController
   end
 
   def update
+    @new_list = List.new
     @list = List.find(params[:id])
     if @list.user_id == current_user.id
-      @list.update(list_params)
-      redirect_to @list
+      if @list.update(list_params)
+        redirect_to @list
+      else
+        flash.now[:notice] = "Invalid entry"
+        render :edit
+      end
     else
       redirect_to @list
     end

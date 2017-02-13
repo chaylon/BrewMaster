@@ -1,5 +1,7 @@
 <h3>Edit your beer list!</h3>
-
+<div class="notice">
+  <%= notice %>
+</div>
 <%= form_for(@list) do |f| %>
   <div class="field">
       <%= f.label :name %><br/>
@@ -12,7 +14,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit(value="Submit") %>
+    <%= f.submit(value="Submit", class: "btn btn-sm btn-primary") %>
   </div>
 
 <% end %>
