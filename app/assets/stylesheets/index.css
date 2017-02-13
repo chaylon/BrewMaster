@@ -403,3 +403,10 @@ body {
   text-align: left;
   list-style: none;
 }
+
+.notice {
+  font-size: 8px;
+  color: red;
+  margin: 0;
+  padding: 0;
+}
