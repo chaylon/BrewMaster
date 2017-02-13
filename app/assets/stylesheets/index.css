@@ -398,3 +398,8 @@ body {
 .add-button:active {
   background-color: #f49e42;
 }
+
+.edit-form #error_explanation ul {
+  text-align: left;
+  list-style: none;
+}
