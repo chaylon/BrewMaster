@@ -25,6 +25,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* Deployment adjustment again
+* Deployment adjustment again and again
 
 * ...
