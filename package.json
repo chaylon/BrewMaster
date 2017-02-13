@@ -28,7 +28,8 @@
     "karma-webpack": "^1.7.0",
     "phantomjs-prebuilt": "^2.1.7",
     "react-addons-test-utils": "^15.0.2",
-    "redux-devtools": "^3.2.0"
+    "redux-devtools": "^3.2.0",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   },
   "dependencies": {
     "babel-core": "^6.8.0",
@@ -46,7 +47,6 @@
     "redux-form": "^5.2.3",
     "redux-thunk": "^2.1.0",
     "webpack": "^1.13.0",
-    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
     "react-paginate": "4.1.1",
     "react-addons-create-fragment": "15.4.2"
   }
