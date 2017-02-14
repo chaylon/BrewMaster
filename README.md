@@ -1,6 +1,4 @@
 ![Build Status](https://codeship.com/projects/2917b9a0-d2d7-0134-8e95-1e7634807a2c/status?branch=master)
-![Code Climate](https://codeclimate.com/github/chaylon/BrewMaster.png)
-![Coverage Status](https://coveralls.io/repos/chaylon/BrewMaster/badge.png)
 
 # BrewMaster
 
