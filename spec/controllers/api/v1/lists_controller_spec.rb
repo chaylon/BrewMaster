@@ -1,8 +1,6 @@
 require "rails_helper"
 require "database_cleaner"
 
-DatabaseCleaner.strategy = :truncation
-
 describe Api::V1::ListsController, type: :controller do
   include Devise::Test::ControllerHelpers
   DatabaseCleaner.start
