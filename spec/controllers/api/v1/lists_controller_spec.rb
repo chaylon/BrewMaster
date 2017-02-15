@@ -1,7 +1,10 @@
 require "rails_helper"
+require "database_cleaner"
 
 describe Api::V1::ListsController, type: :controller do
   include Devise::Test::ControllerHelpers
+  DatabaseCleaner.start
+
   describe "GET #index" do
     let!(:user) {FactoryGirl.create(:user)}
     let!(:list1) {FactoryGirl.create(:list, user: user, name: "List one")}
@@ -60,4 +63,5 @@ describe Api::V1::ListsController, type: :controller do
       expect(user.lists).to eq([])
     end
   end
+  DatabaseCleaner.clean
 end
