@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     limit_beers = beers[0..7]
     @fav_beers = []
     limit_beers.each do |beer|
-      if beer.score >= 3
+      if beer.ratings.where(user_id: @user.id).first.score >= 3
         @fav_beers << beer
       end
     end
