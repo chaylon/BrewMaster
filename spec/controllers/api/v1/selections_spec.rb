@@ -21,4 +21,24 @@ describe Api::V1::SelectionsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    let!(:user) {FactoryGirl.create(:user)}
+    let!(:list) {FactoryGirl.create(:list, user: user)}
+    let!(:beer) {FactoryGirl.create(:beer)}
+
+    it "creates a selection" do
+      sign_in(user)
+
+      expect(Selection.all.length).to eq(0)
+      post :create, params: {list_id: list.id, beer_id: beer.id}
+
+      expect(Selection.all.length).to eq(1)
+
+      selection = Selection.first
+
+      expect(selection.list).to eq(list)
+      expect(selection.beer).to eq(beer)
+    end
+  end
+  DatabaseCleaner.clean
 end
