@@ -12,7 +12,7 @@
           <div class="favorite-icon">
             <h4><%= link_to beer.name, beer_path(beer) %>
               <div class="score">
-                <%= beer.score %>
+                <%= beer.ratings.where(user_id: @user.id).first.score %>
               </div>
             </h4>
           </div>
