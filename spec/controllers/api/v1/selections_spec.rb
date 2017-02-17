@@ -40,5 +40,21 @@ describe Api::V1::SelectionsController, type: :controller do
       expect(selection.beer).to eq(beer)
     end
   end
+
+  describe "DELETE #destroy" do
+    let!(:user) {FactoryGirl.create(:user)}
+    let!(:list) {FactoryGirl.create(:list, user: user)}
+    let!(:beer) {FactoryGirl.create(:beer)}
+    let!(:selection) {FactoryGirl.create(:selection, list: list, beer: beer)}
+
+    it "can delete selections" do
+      sign_in(user)
+
+      expect(Selection.all.length).to eq(1)
+      delete :destroy, params: {list_id: list.id, id: selection.id}
+
+      expect(Selection.all.length).to eq(0)
+    end
+  end
   DatabaseCleaner.clean
 end
