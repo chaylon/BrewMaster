@@ -1,16 +1,17 @@
 require "rails_helper"
 
 feature "user deletes list" do
-  xscenario "successfully" do
+  scenario "successfully" do
     user = FactoryGirl.create(:user)
     list = FactoryGirl.create(:list, user: user)
     login_as_user(user)
     click_on("This is a list")
 
     within(".page-content") do
-      expect(page).to have_content("Delete")
       click_on("Delete")
     end
+
+    expect(page).to_not have_content("This is a list")
   end
 
   scenario "user can only delete their own lists" do
