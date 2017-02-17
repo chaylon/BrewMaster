@@ -62,5 +62,21 @@ describe Api::V1::RatingsController, type: :controller do
       expect(Rating.first.score).to eq(2)
     end
   end
+
+  describe "DELETE #destroy" do
+    let!(:user) {FactoryGirl.create(:user)}
+    let!(:beer) {FactoryGirl.create(:beer)}
+    let!(:rating) {FactoryGirl.create(:rating, user: user, beer: beer)}
+
+    it "deletes a rating" do
+      sign_in(user)
+
+      expect(Rating.all.length).to eq(1)
+
+      delete :destroy, params: {beer_id: beer.id, id: rating.id}
+
+      expect(Rating.all.length).to eq(0)
+    end
+  end
   DatabaseCleaner.clean
 end
