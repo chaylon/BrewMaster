@@ -1,5 +1,7 @@
 ![Build Status](https://codeship.com/projects/2917b9a0-d2d7-0134-8e95-1e7634807a2c/status?branch=master)
+
 [![Coverage Status](https://coveralls.io/repos/github/chaylon/BrewMaster/badge.svg?branch=master)](https://coveralls.io/github/chaylon/BrewMaster?branch=master)
+
 
 # BrewMaster
 
