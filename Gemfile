@@ -11,7 +11,6 @@ gem 'httparty'
 gem 'pry-rails'
 gem 'sprockets-rails'
 
-
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
