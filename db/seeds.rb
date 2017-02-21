@@ -9,8 +9,9 @@ require 'httparty'
 require 'pry'
 images = ["beer_icon.jpg","beer-icon2.jpg","beer_icon3.png","beer_icon4.ico"]
 page = 1
+key = ENV['API_KEY']
 10.times do
-  url = "http://api.brewerydb.com/v2/beers?p=#{page}&withBreweries=Y&key=9ba868847c4bf6b08953652d662267a9"
+  url = "http://api.brewerydb.com/v2/beers?p=#{page}&withBreweries=Y&key=#{key}"
   response = HTTParty.get(url)
   page += 1
 
